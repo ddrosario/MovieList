@@ -4,7 +4,9 @@
   "description": "A movie's to watch list",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ./server",
+    "build": "webpack -w"
   },
   "repository": {
     "type": "git",
@@ -19,9 +21,15 @@
   "dependencies": {
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
+    "cookie-parser": "^1.4.3",
+    "enzyme": "^3.8.0",
     "express": "^4.16.4",
+    "express-session": "^1.15.6",
+    "jest": "^23.6.0",
+    "jext": "^0.4.3",
     "mongo": "^0.1.0",
     "mongoose": "^5.4.0",
+    "nodemon": "^1.18.9",
     "path": "^0.12.7",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
