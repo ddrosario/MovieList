@@ -9,7 +9,7 @@ router
     controller.fetchAll(req, res);
   })
   .post((req, res) => {
-    controller.post(req, res);
+    controller.addMovie(req, res);
   });
 
 router
