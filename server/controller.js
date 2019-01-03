@@ -31,6 +31,7 @@ module.exports = {
       });
   },
   addMovie: (req, res) => {
+    console.log('we got a request ', req.body);
     axios
       .get(apiUrl, {
         params: { t: req.body.movie, type: 'movie', plot: 'short' }

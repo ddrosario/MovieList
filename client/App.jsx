@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import MovieList from './components/MovieList';
+import AddMovie from './components/AddMovie';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -8,14 +9,18 @@ export default class App extends React.Component {
     this.state = {
       loggedIn: false,
       user: '',
-      movies: []
+      movies: [],
+      addMovie: ''
     };
     this.getUserMovie = this.getUserMovie.bind(this);
     this.handleRating = this.handleRating.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
   handleRating(e, obj) {
     axios
       .post('/api/movies', {
+        //update url to reflect id!!!!!
         movie: obj.title,
         like: obj.like
       })
@@ -26,6 +31,16 @@ export default class App extends React.Component {
         console.log('was not able to rate', err);
         alert('Could not update rating');
       });
+  }
+  handleChange(e, options) {
+    this.setState({
+      addMovie: e.target.value
+    });
+  }
+  handleSubmit(e, options) {
+    axios.post('/api/movies', {
+      movie: this.state.addMovie
+    });
   }
   getUserMovie() {
     axios
@@ -48,6 +63,12 @@ export default class App extends React.Component {
       <span>
         <h1 className="title">The Watch List</h1>
         <div />
+        <div>
+          <AddMovie
+            handleChange={this.handleChange}
+            handleSubmit={this.handleSubmit}
+          />
+        </div>
         <div>
           <MovieList movies={this.state.movies} />
         </div>

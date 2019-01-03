@@ -8,8 +8,9 @@ export default function MovieListEntry(props) {
     rating = '👎';
   }
   return (
-    <div>
+    <div className="innerGrid">
       <h2>{props.movie.title}</h2>
+      <img className="poster" src={props.movie.posterUrl} />
       <div>Year: {props.movie.year}</div>
       <div>
         Runtime:{' '}
