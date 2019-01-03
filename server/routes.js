@@ -6,7 +6,7 @@ router.route('/login');
 router
   .route('/movies')
   .get((req, res) => {
-    controller.fetch(req.query);
+    controller.fetchAll(req, res);
   })
   .post((req, res) => {
     controller.post(req, res);
@@ -15,10 +15,10 @@ router
 router
   .route('/movies/:id')
   .delete((req, res) => {
-    controller.delete(req.params, res);
+    controller.delete(req, res);
   })
   .patch((req, res) => {
-    controller.update(req.params, res);
+    controller.updateRating(req, res);
   });
 
 module.exports = router;

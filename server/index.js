@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static(path.resolve(__dirname, '../static')));
 
-app.use('/', router);
+app.use('/api', router);
 
 app.listen(PORT, () => {
   console.log('Listening to port: ', PORT);
