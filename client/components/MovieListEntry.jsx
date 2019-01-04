@@ -24,7 +24,8 @@ export default function MovieListEntry(props) {
         onClick={e =>
           props.handleRating(e, {
             like: 'like',
-            title: props.movie.title
+            title: props.movie.title,
+            id: props.movie._id
           })
         }
       >
@@ -34,7 +35,8 @@ export default function MovieListEntry(props) {
         onClick={e =>
           props.handleRating(e, {
             like: 'dislike',
-            title: props.movie.title
+            title: props.movie.title,
+            id: props.movie._id
           })
         }
       >

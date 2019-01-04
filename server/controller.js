@@ -3,22 +3,6 @@ const { APIKEY } = require('../secrets/Api.js');
 const axios = require('axios');
 let apiUrl = `http://www.omdbapi.com/?apikey=${APIKEY}&`;
 
-function dataScrubber(data) {
-  return {
-    title: data.Title,
-    runtime: data.Runtime,
-    posterUrl: data.Poster,
-    year: parseInt(data.Year),
-    plot: data.Plot,
-    rottenRating: data.Ratings.reduce((acc, curr) => {
-      return curr.Source === 'Rotten Tomatoes' ? curr.Value : acc;
-    }, 'N/A'),
-    viewed: false,
-    userRating: '',
-    user_id: 'default'
-  };
-}
-
 module.exports = {
   fetchAll: (req, res) => {
     Movie.find({})
@@ -59,5 +43,34 @@ module.exports = {
   },
   updateRating: (req, res) => {
     console.log('this is params', req.params);
+    Movie.findOneAndUpdate(
+      { _id: req.params.id },
+      { userRating: req.body.like }
+    )
+      .then(result => {
+        console.log('was successful', result);
+        res.status(202).send(result);
+      })
+      .catch(err => {
+        console.log('did not work ', err);
+        res.status(402).send(err);
+      });
   }
 };
+
+/* Helper Functions */
+function dataScrubber(data) {
+  return {
+    title: data.Title,
+    runtime: data.Runtime,
+    posterUrl: data.Poster,
+    year: parseInt(data.Year),
+    plot: data.Plot,
+    rottenRating: data.Ratings.reduce((acc, curr) => {
+      return curr.Source === 'Rotten Tomatoes' ? curr.Value : acc;
+    }, 'N/A'),
+    viewed: false,
+    userRating: '',
+    user_id: 'default'
+  };
+}

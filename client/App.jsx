@@ -17,15 +17,21 @@ export default class App extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-  handleRating(e, obj) {
+  handleRating(e, options) {
     axios
-      .post('/api/movies', {
+      .patch('/api/movies/' + options.id, {
         //update url to reflect id!!!!!
-        movie: obj.title,
-        like: obj.like
+        movie: options.title,
+        like: options.like
       })
-      .then(result => {
-        this.getUserMovie();
+      .then(({ data }) => {
+        console.log(data);
+        data.like = options.like;
+        this.setState({
+          movies: this.state.movies.map(movie =>
+            movie._id === options.id ? data : movie
+          )
+        });
       })
       .catch(err => {
         console.log('was not able to rate', err);

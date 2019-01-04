@@ -18,6 +18,7 @@ router
     controller.delete(req, res);
   })
   .patch((req, res) => {
+    console.log('got the patch and ', req.body);
     controller.updateRating(req, res);
   });
 
