@@ -22,4 +22,7 @@ router
     controller.updateRating(req, res);
   });
 
+router.route('/search').get((req, res) => {
+  controller.search(req, res);
+});
 module.exports = router;

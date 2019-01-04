@@ -10,7 +10,9 @@ export default class Search extends React.Component {
       results: []
     };
     this.handleChange = this.handleChange.bind(this);
-    this.handleSelection = this.handleSelection.bind(this);
+    this.handleSearch = this.handleSearch.bind(this);
+    console.log('this is the props', props);
+    this.handleSelection = props.handleSelection;
   }
   handleChange(e) {
     this.setState({
@@ -18,18 +20,39 @@ export default class Search extends React.Component {
     });
   }
   handleSearch(e) {
-    axios.get('/api/search');
+    axios
+      .get('/api/search', { params: { search: this.state.search } })
+      .then(({ data }) => {
+        console.log('Here is the data', data);
+        this.setState({
+          results: data
+        });
+      })
+      .catch(err => {
+        alert('Could not get results', err);
+      });
+    e.preventDefault();
   }
-  handleSelection(e) {}
 
   componentDidMount() {}
   render() {
     return (
       <span>
-        <form>
-          <input />
+        <form onSubmit={this.handleSearch}>
+          <input
+            onChange={e => {
+              this.setState({
+                search: e.target.value
+              });
+            }}
+            type="text"
+          />
+          <input type="submit" />
         </form>
-        <SearchList />
+        <SearchList
+          movies={this.state.results}
+          handleSelection={this.props.handleSelection}
+        />
       </span>
     );
   }

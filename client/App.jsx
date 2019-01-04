@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import MovieList from './components/MovieList';
 import AddMovie from './components/AddMovie';
+import Search from './components/Search';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -16,6 +17,7 @@ export default class App extends React.Component {
     this.handleRating = this.handleRating.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleSelection = this.handleSelection.bind(this);
   }
   handleRating(e, options) {
     axios
@@ -61,6 +63,13 @@ export default class App extends React.Component {
         console.log('Could not receive data: ', err);
       });
   }
+  handleSelection(e, id) {
+    axios.post('/api/movies/', {
+      params: {
+        id: id
+      }
+    }); //need to change route to be able to add by imdbId
+  }
   componentDidMount() {
     this.getUserMovie();
   }
@@ -69,12 +78,17 @@ export default class App extends React.Component {
       <span>
         <h1 className="title">The Watch List</h1>
         <div />
-        <div>
-          <AddMovie
-            handleChange={this.handleChange}
-            handleSubmit={this.handleSubmit}
-          />
-        </div>
+        <span style={{ display: 'flex' }}>
+          <div>
+            <AddMovie
+              handleChange={this.handleChange}
+              handleSubmit={this.handleSubmit}
+            />
+          </div>
+          <div>
+            <Search handleSelection={this.handleSelection} />
+          </div>
+        </span>
         <div>
           <MovieList movies={this.state.movies} />
         </div>
