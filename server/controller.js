@@ -39,7 +39,13 @@ module.exports = {
       });
   },
   delete: (req, res) => {
-    console.log('this is the delete', req.params);
+    Movie.findByIdAndRemove({ _id: req.params.id })
+      .then(result => {
+        res.send(result);
+      })
+      .catch(err => {
+        res.send(err);
+      });
   },
   updateRating: (req, res) => {
     Movie.findOneAndUpdate(
