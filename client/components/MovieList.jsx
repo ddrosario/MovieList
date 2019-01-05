@@ -3,7 +3,10 @@ import MovieListEntry from './MovieListEntry';
 
 export default function MovieList(props) {
   return (
-    <div className="movieList">
+    <div
+      className="movieList"
+      style={{ display: 'grid', gridTemplateColumns: 'auto auto auto' }}
+    >
       {props.movies.map(movie => {
         return (
           <MovieListEntry

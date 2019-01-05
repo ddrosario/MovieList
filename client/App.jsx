@@ -27,7 +27,6 @@ export default class App extends React.Component {
         like: options.like
       })
       .then(({ data }) => {
-        console.log(data);
         data.like = options.like;
         this.setState({
           movies: this.state.movies.map(movie =>
@@ -36,8 +35,7 @@ export default class App extends React.Component {
         });
       })
       .catch(err => {
-        console.log('was not able to rate', err);
-        alert('Could not update rating');
+        alert('Could not update rating', err);
       });
   }
   handleChange(e, options) {
@@ -78,20 +76,17 @@ export default class App extends React.Component {
       <span>
         <h1 className="title">The Watch List</h1>
         <div />
-        <span style={{ display: 'flex' }}>
+        <span style={{ display: 'flex', justifyContent: 'space-evenly' }}>
           <div>
             <AddMovie
               handleChange={this.handleChange}
               handleSubmit={this.handleSubmit}
             />
+            <MovieList movies={this.state.movies} />
           </div>
-          <div>
-            <Search handleSelection={this.handleSelection} />
-          </div>
+          <Search handleSelection={this.handleSelection} />
         </span>
-        <div>
-          <MovieList movies={this.state.movies} />
-        </div>
+        <div />
       </span>
     );
   }

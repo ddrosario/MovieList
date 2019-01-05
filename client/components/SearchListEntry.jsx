@@ -9,7 +9,7 @@ export default function SearchListEntry(props) {
       }}
     >
       <div>
-        <img src={props.movie.Poster} />
+        <img src={props.movie.Poster} className="poster" />
         <div>{props.movie.Title}</div>
         <div>{props.movie.Year}</div>
       </div>
