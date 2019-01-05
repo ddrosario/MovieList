@@ -17,7 +17,12 @@ module.exports = {
   addMovie: (req, res) => {
     axios
       .get(apiUrl, {
-        params: { t: req.body.movie, type: 'movie', plot: 'short' }
+        params: {
+          t: req.body.movie,
+          i: req.body.id,
+          type: 'movie',
+          plot: 'short'
+        }
       })
       .then(({ data }) => {
         new Movie(dataScrubber(data))

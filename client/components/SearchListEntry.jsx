@@ -4,7 +4,7 @@ export default function SearchListEntry(props) {
   return (
     <span
       onClick={e => {
-        console.log('I was clicked');
+        console.log('I was clicked', props.movie.imdbID);
         props.handleSelection(e, props.movie.imdbID);
       }}
     >

@@ -43,9 +43,10 @@ export default class App extends React.Component {
       addMovie: e.target.value
     });
   }
-  handleSubmit(e, options) {
+  handleSubmit(e, id) {
     axios.post('/api/movies', {
-      movie: this.state.addMovie
+      movie: this.state.addMovie,
+      id: id
     });
   }
   getUserMovie() {
@@ -63,9 +64,7 @@ export default class App extends React.Component {
   }
   handleSelection(e, id) {
     axios.post('/api/movies/', {
-      params: {
-        id: id
-      }
+      id: id
     }); //need to change route to be able to add by imdbId
   }
   componentDidMount() {
@@ -82,9 +81,12 @@ export default class App extends React.Component {
               handleChange={this.handleChange}
               handleSubmit={this.handleSubmit}
             />
-            <MovieList movies={this.state.movies} />
+            <MovieList
+              movies={this.state.movies}
+              handleRating={this.handleRating}
+            />
           </div>
-          <Search handleSelection={this.handleSelection} />
+          <Search handleSelection={this.handleSubmit} />
         </span>
         <div />
       </span>
