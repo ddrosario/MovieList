@@ -1,12 +1,6 @@
 import React from 'react';
 
 export default function MovieListEntry(props) {
-  let rating = '';
-  if (props.movie.userRating === 'like') {
-    rating = '👍';
-  } else if (props.movie.userRating === 'dislike') {
-    rating = '👎';
-  }
   return (
     <div className="innerGrid">
       <h2>{props.movie.title}</h2>
@@ -18,8 +12,9 @@ export default function MovieListEntry(props) {
           '  |  Rotten 🍅 Rating:' +
           props.movie.rottenRating}
       </div>
-      <div>Your rating: {rating}</div>
-      <br />
+      {props.movie.userRating === 'like' ? 'Your rating: 👍' : <div />}
+      {props.movie.userRating === 'dislike' ? 'Your rating: 👎' : <div />}
+      <div />
       <button
         onClick={e =>
           props.handleRating(e, {

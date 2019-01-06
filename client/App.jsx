@@ -17,22 +17,15 @@ export default class App extends React.Component {
     this.handleRating = this.handleRating.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleSelection = this.handleSelection.bind(this);
   }
   handleRating(e, options) {
     axios
       .patch('/api/movies/' + options.id, {
-        //update url to reflect id!!!!!
         movie: options.title,
         like: options.like
       })
       .then(({ data }) => {
-        data.like = options.like;
-        this.setState({
-          movies: this.state.movies.map(movie =>
-            movie._id === options.id ? data : movie
-          )
-        });
+        this.getUserMovie();
       })
       .catch(err => {
         alert('Could not update rating', err);
@@ -61,11 +54,6 @@ export default class App extends React.Component {
       .catch(err => {
         console.log('Could not receive data: ', err);
       });
-  }
-  handleSelection(e, id) {
-    axios.post('/api/movies/', {
-      id: id
-    }); //need to change route to be able to add by imdbId
   }
   componentDidMount() {
     this.getUserMovie();
