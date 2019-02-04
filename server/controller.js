@@ -1,5 +1,5 @@
 const { Movie } = require('../database/model.js');
-const { APIKEY } = require('../secrets/Api.js');
+const { APIKEY, Mashape, MashapeUrl } = require('../secrets/Api.js');
 const axios = require('axios');
 let apiUrl = `http://www.omdbapi.com/?apikey=${APIKEY}&`;
 
@@ -28,10 +28,10 @@ module.exports = {
         new Movie(dataScrubber(data))
           .save()
           .then(() => {
-            res.status(201).send(data);
+            res.status(201).send();
           })
           .catch(err => {
-            res.status(402).send(data);
+            res.status(402).send();
           });
       })
       .catch(err => {
@@ -68,6 +68,9 @@ module.exports = {
       .catch(err => {
         res.send(err);
       });
+  },
+  dev: (req, res) => {
+    findStreamingService('american dad');
   }
 };
 
@@ -86,4 +89,14 @@ function dataScrubber(data) {
     userRating: '',
     user_id: 'default'
   };
+}
+function findStreamingService(movie) {
+  axios
+    .get(MashapeUrl, Mashape)
+    .then(result => {
+      console.log('we have some data', result);
+    })
+    .catch(err => {
+      console.log('could not get data', err);
+    });
 }

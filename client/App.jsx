@@ -37,10 +37,17 @@ export default class App extends React.Component {
     });
   }
   handleSubmit(e, id) {
-    axios.post('/api/movies', {
-      movie: this.state.addMovie,
-      id: id
-    });
+    axios
+      .post('/api/movies', {
+        movie: this.state.addMovie,
+        id: id
+      })
+      .then(() => {
+        this.getUserMovie();
+      })
+      .catch(err => {
+        console.error(err);
+      });
   }
   getUserMovie() {
     axios

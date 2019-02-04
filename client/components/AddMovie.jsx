@@ -4,14 +4,15 @@ export default function AddMovie(props) {
   return (
     <form
       onSubmit={e => {
-        props.handleSubmit(e, {});
+        props.handleSubmit(e);
       }}
+      id="addMovie"
     >
       <input
         type="text"
         placeholder="Enter a title to add"
         onChange={e => {
-          props.handleChange(e, {});
+          props.handleChange(e);
         }}
       />
       <input type="submit" />

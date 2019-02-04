@@ -24,4 +24,5 @@ router
 router.route('/search').get((req, res) => {
   controller.search(req, res);
 });
+router.route('/dev').get(controller.dev);
 module.exports = router;

@@ -11,8 +11,6 @@ export default class Search extends React.Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
-    console.log('this is the props', props);
-    // this.handleSelection = props.handleSelection;
   }
   handleChange(e) {
     this.setState({
