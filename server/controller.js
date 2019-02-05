@@ -1,5 +1,6 @@
 const { Movie } = require('../database/model.js');
-const { APIKEY, Mashape, MashapeUrl } = require('../secrets/Api.js');
+// const { APIKEY, Mashape, MashapeUrl } = require('../secrets/Api.js');
+const APIKEY = 'temporary'
 const axios = require('axios');
 let apiUrl = `http://www.omdbapi.com/?apikey=${APIKEY}&`;
 
@@ -90,13 +91,13 @@ function dataScrubber(data) {
     user_id: 'default'
   };
 }
-function findStreamingService(movie) {
-  axios
-    .get(MashapeUrl, Mashape)
-    .then(result => {
-      console.log('we have some data', result);
-    })
-    .catch(err => {
-      console.log('could not get data', err);
-    });
-}
+// function findStreamingService(movie) {
+//   axios
+//     .get(MashapeUrl, Mashape)
+//     .then(result => {
+//       console.log('we have some data', result);
+//     })
+//     .catch(err => {
+//       console.log('could not get data', err);
+//     });
+// }

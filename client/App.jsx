@@ -3,6 +3,7 @@ import axios from 'axios';
 import MovieList from './components/MovieList';
 import AddMovie from './components/AddMovie';
 import Search from './components/Search';
+import styles from './appStyles.css'
 
 export default class App extends React.Component {
   constructor(props) {
@@ -70,7 +71,7 @@ export default class App extends React.Component {
       <span>
         <h1 className="title">The Watch List</h1>
         <div />
-        <span style={{ display: 'flex', justifyContent: 'space-evenly' }}>
+        <span className={styles.inputField}>
           <div>
             <AddMovie
               handleChange={this.handleChange}

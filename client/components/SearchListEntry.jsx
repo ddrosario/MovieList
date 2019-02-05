@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from '../appStyles'
 
 export default function SearchListEntry(props) {
   return (
@@ -8,7 +9,7 @@ export default function SearchListEntry(props) {
       }}
     >
       <div>
-        <img src={props.movie.Poster} className="poster" />
+        <img src={props.movie.Poster} className={styles.poster} />
         <div>{props.movie.Title}</div>
         <div>{props.movie.Year}</div>
       </div>
