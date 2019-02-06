@@ -1,10 +1,11 @@
 import React from 'react';
+import styles from '../appStyles.css';
 
 export default function MovieListEntry(props) {
   return (
     <div className="innerGrid">
       <h2>{props.movie.title}</h2>
-      <img className="poster" src={props.movie.posterUrl} />
+      <img className={styles.poster} src={props.movie.posterUrl} />
       <div>Year: {props.movie.year}</div>
       <div>
         Runtime:{' '}
