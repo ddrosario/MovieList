@@ -1,0 +1,15 @@
+.inputFields {
+  display: flex;
+  justify-content: space-between;
+}
+.movieList {
+  display: 'grid';
+  grid-template-columns: 'auto auto auto';
+}
+.poster {
+  width: 50px;
+  height: 60px;
+}
+.test {
+  background-color: black;
+}

@@ -5,8 +5,8 @@ import styles from '../appStyles.css';
 export default function MovieList(props) {
   return (
     <div
-      className={styles.movieList}
-      // style={{ display: 'grid', gridTemplateColumns: 'auto auto auto' }}
+      // className={styles.movieList}
+      style={{ display: 'grid', gridTemplateColumns: 'auto auto auto' }}
     >
       {props.movies.map(movie => {
         return (
