@@ -4,7 +4,7 @@ import MovieList from './components/MovieList';
 import AddMovie from './components/AddMovie';
 import Search from './components/Search';
 import NavBar from './components/NavBar';
-import styles from './appStyles.css';
+import styles from './styles/appStyles.css';
 
 export default class App extends React.Component {
   constructor(props) {

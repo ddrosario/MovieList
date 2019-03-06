@@ -1,13 +1,10 @@
 import React from 'react';
 import MovieListEntry from './MovieListEntry';
-import styles from '../appStyles.css';
+import styles from '../styles/MovieListStyles.css';
 
 export default function MovieList(props) {
   return (
-    <div
-      // className={styles.movieList}
-      style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr' }}
-    >
+    <div className={styles.movieList}>
       {props.movies.map(movie => {
         return (
           <MovieListEntry
