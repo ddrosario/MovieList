@@ -1,0 +1,13 @@
+.navBar {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 25px;
+  background-color: black;
+  color: white;
+}
+.innerNavBar {
+  border-color: white;
+  box-shadow: 30px white;
+  height: 100%;
+  width: 100%;
+}

@@ -1,6 +1,6 @@
 const { Movie } = require('../database/model.js');
-// const { APIKEY, Mashape, MashapeUrl } = require('../secrets/Api.js');
-const APIKEY = 'temporary'
+const { APIKEY, Mashape, MashapeUrl } = require('../secrets/Api.js');
+// const APIKEY = 'temporary';
 const axios = require('axios');
 let apiUrl = `http://www.omdbapi.com/?apikey=${APIKEY}&`;
 

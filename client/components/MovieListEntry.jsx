@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from '../appStyles.css';
 
 export default function MovieListEntry(props) {
   return (

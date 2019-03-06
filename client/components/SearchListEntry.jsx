@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../appStyles.css';
+// import style from '../appstyles.css';
 
 export default function SearchListEntry(props) {
   return (
@@ -9,7 +9,7 @@ export default function SearchListEntry(props) {
       }}
     >
       <div>
-        <img src={props.movie.Poster} className={styles.poster} />
+        <img src={props.movie.Poster} className="poster" />
         <div>{props.movie.Title}</div>
         <div>{props.movie.Year}</div>
       </div>

@@ -1,6 +1,7 @@
 .inputFields {
   display: flex;
   justify-content: space-between;
+  background-color: rgba(125, 24, 240, 0.24);
 }
 .movieList {
   display: 'grid';
@@ -9,6 +10,11 @@
 .poster {
   width: 100px;
   height: 120px;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
 }
 body {
   margin: auto;

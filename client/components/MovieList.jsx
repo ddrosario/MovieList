@@ -6,7 +6,7 @@ export default function MovieList(props) {
   return (
     <div
       // className={styles.movieList}
-      style={{ display: 'grid', gridTemplateColumns: 'auto auto auto' }}
+      style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr' }}
     >
       {props.movies.map(movie => {
         return (

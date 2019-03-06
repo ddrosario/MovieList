@@ -3,6 +3,7 @@ import axios from 'axios';
 import MovieList from './components/MovieList';
 import AddMovie from './components/AddMovie';
 import Search from './components/Search';
+import NavBar from './components/NavBar';
 import styles from './appStyles.css';
 
 export default class App extends React.Component {
@@ -69,8 +70,9 @@ export default class App extends React.Component {
   render() {
     return (
       <span>
-        <h1 className="title">The Watch List</h1>
+        <h1 className={styles.title}>The Watch List</h1>
         <div />
+        <NavBar />
         <span className={styles.inputFields}>
           <div>
             <AddMovie
