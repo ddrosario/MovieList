@@ -6,7 +6,9 @@ export default function NavBar(props) {
     <span className={styles.navBar}>
       <div className={styles.innerNavBar}>Your List</div>
       <div className={styles.innerNavBar}>Search</div>
-      <div className={styles.innerNavBar}>What's Streaming</div>
+      <div className={styles.innerNavBar}>
+        What's<br />Streaming
+      </div>
       <div className={styles.innerNavBar}>History</div>
     </span>
   );

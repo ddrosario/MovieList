@@ -10,6 +10,9 @@ router
   })
   .post((req, res) => {
     controller.addMovie(req, res);
+  })
+  .delete((req, res) => {
+    console.log('hello inside other route');
   });
 
 router

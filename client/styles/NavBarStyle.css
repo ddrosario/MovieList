@@ -1,13 +1,22 @@
 .navBar {
   display: flex;
-  justify-content: space-evenly;
+  flex-direction: column;
+  /* justify-content: ; */
+  align-items: center;
   padding: 25px;
-  background-color: black;
+  /* height: ; */
+  background-color: rgb(109, 109, 109);
   color: white;
 }
 .innerNavBar {
-  border-color: white;
-  box-shadow: 30px white;
-  height: 100%;
-  width: 100%;
+  border: 2px solid white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 1in;
+  width: 1in;
+}
+.innerNavBar:hover {
+  background-color: darkgray;
+  color: black;
 }

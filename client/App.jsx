@@ -19,6 +19,7 @@ export default class App extends React.Component {
     this.handleRating = this.handleRating.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
   handleRating(e, options) {
     axios
@@ -37,6 +38,14 @@ export default class App extends React.Component {
     this.setState({
       addMovie: e.target.value
     });
+  }
+  handleDelete(e, id) {
+    axios
+      .delete('/api/movies/' + id)
+      .then(res => {
+        console.log('result', res);
+      })
+      .catch(err => alert('could noo delete: ', err));
   }
   handleSubmit(e, id) {
     axios
@@ -71,21 +80,24 @@ export default class App extends React.Component {
     return (
       <span>
         <h1 className={styles.title}>The Watch List</h1>
-        <div />
-        <NavBar />
-        <span className={styles.inputFields}>
-          <div>
-            <AddMovie
-              handleChange={this.handleChange}
-              handleSubmit={this.handleSubmit}
-            />
-            <MovieList
-              movies={this.state.movies}
-              handleRating={this.handleRating}
-            />
-          </div>
-          <Search handleSelection={this.handleSubmit} />
+        <span style={{ display: 'flex' }}>
+          <NavBar />
+          {/* <span>big window</span> */}
+          <span className={styles.inputFields}>
+            <div>
+              <AddMovie
+                handleChange={this.handleChange}
+                handleSubmit={this.handleSubmit}
+              />
+              <MovieList
+                movies={this.state.movies}
+                handleRating={this.handleRating}
+                handleDelete={this.handleDelete}
+              />
+            </div>
+          </span>
         </span>
+        <Search handleSelection={this.handleSubmit} />
         <div />
       </span>
     );

@@ -39,6 +39,9 @@ export default function MovieListEntry(props) {
         >
           👎
         </button>
+        <button onClick={e => props.handleDelete(e, props.movie._id)}>
+          Delete
+        </button>
       </span>
     </div>
   );

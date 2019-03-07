@@ -10,7 +10,9 @@ export default function MovieList(props) {
           <MovieListEntry
             movie={movie}
             key={movie.id}
+            id={movie.id}
             handleRating={props.handleRating}
+            handleDelete={props.handleDelete}
           />
         );
       })}
