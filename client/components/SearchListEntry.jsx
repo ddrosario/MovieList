@@ -8,6 +8,7 @@ export default function SearchListEntry(props) {
         props.handleSelection(e, props.movie.imdbID);
       }}
     >
+      click to add
       <div>
         <img src={props.movie.Poster} className="poster" />
         <div>{props.movie.Title}</div>

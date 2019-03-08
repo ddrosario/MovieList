@@ -5,6 +5,14 @@ import AddMovie from './components/AddMovie';
 import Search from './components/Search';
 import NavBar from './components/NavBar';
 import styles from './styles/appStyles.css';
+/*******
+ * enum selected{
+ * login: 0,
+ * movies: 1,
+ * search: 2,
+ * history: 3,
+ * }
+ */
 
 export default class App extends React.Component {
   constructor(props) {
@@ -13,13 +21,15 @@ export default class App extends React.Component {
       loggedIn: false,
       user: '',
       movies: [],
-      addMovie: ''
+      addMovie: '',
+      selected: 1
     };
     this.getUserMovie = this.getUserMovie.bind(this);
     this.handleRating = this.handleRating.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
+    this.handleSelectedWindow = this.handleSelectedWindow.bind(this);
   }
   handleRating(e, options) {
     axios
@@ -44,6 +54,7 @@ export default class App extends React.Component {
       .delete('/api/movies/' + id)
       .then(res => {
         console.log('result', res);
+        this.getUserMovie();
       })
       .catch(err => alert('could noo delete: ', err));
   }
@@ -59,6 +70,12 @@ export default class App extends React.Component {
       .catch(err => {
         console.error(err);
       });
+  }
+  handleSelectedWindow(e, someEnum) {
+    console.log('hello ', someEnum);
+    this.setState({
+      selected: someEnum
+    });
   }
   getUserMovie() {
     axios
@@ -77,29 +94,50 @@ export default class App extends React.Component {
     this.getUserMovie();
   }
   render() {
+    var selectedWindow;
+    if (this.state.selected === 1) {
+      selectedWindow = (
+        <div>
+          <MovieList
+            movies={this.state.movies}
+            handleRating={this.handleRating}
+            handleDelete={this.handleDelete}
+          />
+        </div>
+      );
+    } else if (this.state.selected === 2) {
+      selectedWindow = <Search handleSelection={this.handleSubmit} />;
+    }
     return (
       <span>
         <h1 className={styles.title}>The Watch List</h1>
-        <span style={{ display: 'flex' }}>
-          <NavBar />
-          {/* <span>big window</span> */}
-          <span className={styles.inputFields}>
-            <div>
-              <AddMovie
-                handleChange={this.handleChange}
-                handleSubmit={this.handleSubmit}
-              />
-              <MovieList
-                movies={this.state.movies}
-                handleRating={this.handleRating}
-                handleDelete={this.handleDelete}
-              />
-            </div>
+        <span className={styles.mainContainer}>
+          <NavBar
+            handleSelectedWindow={this.handleSelectedWindow}
+            selected={this.state.selected}
+          />
+          <span style={{ display: 'flex', alignItems: 'center' }}>
+            {selectedWindow}
           </span>
         </span>
-        <Search handleSelection={this.handleSubmit} />
         <div />
       </span>
     );
   }
 }
+
+// {
+//   /* <div
+//             style={{
+//               display: 'flex',
+//               flexDirection: 'column',
+//               alignItems: 'center'
+//             }}
+//           >
+//             <h3>Your List</h3>
+//             <AddMovie
+//               handleChange={this.handleChange}
+//               handleSubmit={this.handleSubmit}
+//             />
+//           </div> */
+// }

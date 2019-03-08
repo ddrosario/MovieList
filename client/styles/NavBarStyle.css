@@ -16,6 +16,16 @@
   height: 1in;
   width: 1in;
 }
+.selectedInner {
+  background-color: lightgrey;
+  color: black;
+  border: 2px solid white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 1in;
+  width: 1in;
+}
 .innerNavBar:hover {
   background-color: darkgray;
   color: black;

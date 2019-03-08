@@ -40,7 +40,6 @@ module.exports = {
       });
   },
   delete: (req, res) => {
-    console.log('hello,', req.params);
     Movie.findByIdAndRemove({ _id: req.params.id })
       .then(result => {
         res.send(result);

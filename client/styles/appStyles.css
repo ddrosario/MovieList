@@ -11,7 +11,10 @@
   width: 100px;
   height: 120px;
 }
-
+.mainContainer {
+  display: flex;
+  border: 2px solid black;
+}
 .title {
   display: flex;
   justify-content: center;

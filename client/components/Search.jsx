@@ -1,6 +1,7 @@
 import React from 'react';
 import SearchList from './SearchList.jsx';
 import axios from 'axios';
+import styles from '../styles/SearchStyles.css';
 
 export default class Search extends React.Component {
   constructor(props) {
@@ -35,7 +36,7 @@ export default class Search extends React.Component {
   componentDidMount() {}
   render() {
     return (
-      <span>
+      <span className={styles.search}>
         <form onSubmit={this.handleSearch}>
           <input
             onChange={e => {
@@ -44,6 +45,7 @@ export default class Search extends React.Component {
               });
             }}
             type="text"
+            placeholder="Search for a movie"
           />
           <input type="submit" />
         </form>
