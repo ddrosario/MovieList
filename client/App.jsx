@@ -94,16 +94,14 @@ export default class App extends React.Component {
     this.getUserMovie();
   }
   render() {
-    var selectedWindow;
+    var selectedWindow = <div></div>;
     if (this.state.selected === 1) {
       selectedWindow = (
-        <div>
-          <MovieList
-            movies={this.state.movies}
-            handleRating={this.handleRating}
-            handleDelete={this.handleDelete}
-          />
-        </div>
+        <MovieList
+          movies={this.state.movies}
+          handleRating={this.handleRating}
+          handleDelete={this.handleDelete}
+        />
       );
     } else if (this.state.selected === 2) {
       selectedWindow = <Search handleSelection={this.handleSubmit} />;

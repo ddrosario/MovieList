@@ -1,7 +1,7 @@
 const { Movie } = require('../database/model.js');
 const { APIKEY, Mashape, MashapeUrl } = require('../secrets/Api.js');
-// const APIKEY = 'temporary';
 const axios = require('axios');
+const bcrypt = require('bcrypt');
 let apiUrl = `http://www.omdbapi.com/?apikey=${APIKEY}&`;
 
 module.exports = {
@@ -70,6 +70,7 @@ module.exports = {
         res.send(err);
       });
   },
+  addUser: (req, res) => {},
   dev: (req, res) => {
     findStreamingService('american dad');
   }
