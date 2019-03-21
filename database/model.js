@@ -1,5 +1,5 @@
-const db = require('./index.js');
 const mongoose = require('mongoose');
+const db = require('./index.js');
 
 const movieSchema = new mongoose.Schema({
   title: String,
@@ -10,7 +10,7 @@ const movieSchema = new mongoose.Schema({
   rottenRating: String,
   viewed: Boolean,
   userRating: String,
-  user_id: String
+  user_id: String,
 });
 const Movie = mongoose.model('Movie', movieSchema);
 

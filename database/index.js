@@ -4,7 +4,7 @@ mongoose.connect('mongodb://localhost/movielist', { useNewUrlParser: true });
 
 const db = mongoose.connection;
 
-db.on('error', err => {
+db.on('error', (err) => {
   console.log('Mongoose failed to connect: ', err);
 });
 

@@ -1,10 +1,10 @@
 const express = require('express');
-const app = express();
-const router = require('./routes.js');
 const path = require('path');
 const bodyParser = require('body-parser');
-const https = require('https');
-const bcrypt = require('bcrypt');
+const router = require('./routes.js');
+// const https = require('https');
+// const bcrypt = require('bcrypt');
+const app = express();
 const PORT = 1337;
 
 app.use(bodyParser.json());
