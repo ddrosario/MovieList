@@ -12,8 +12,9 @@ let prevDate = new Date();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use('/api', (req, res, next) => {
-  //TODO FIX THIS
+app.use('/api/search', (req, res, next) => {
+  // TODO FIX THIS
+  //only on the search because that uses the API so far...
   count++;
   if (prevDate.getDate() !== new Date().getDate()) {
     count = 0;
