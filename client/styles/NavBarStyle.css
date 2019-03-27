@@ -36,9 +36,9 @@
   .navBar {
     display: flex;
     flex-direction: row;
-    /* justify-content: ; */
+    justify-content: center;
     align-items: center;
-    padding: 25px;
+    padding: 21px;
     /* height: ; */
     background-color: rgb(109, 109, 109);
     color: white;
@@ -48,8 +48,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 1in;
-    width: 1in;
+    height: 0.75in;
+    width: 0.75in;
   }
   .selectedInner {
     background-color: lightgrey;
@@ -58,8 +58,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 1in;
-    width: 1in;
+    height: 0.75in;
+    width: 0.75in;
   }
   .innerNavBar:hover {
     background-color: darkgray;
