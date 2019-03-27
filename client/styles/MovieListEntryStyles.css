@@ -1,20 +1,38 @@
-.inputFields {
-  display: flex;
-  justify-content: space-between;
+@media only screen and (min-width: 760px) {
+  .inputFields {
+    display: flex;
+    justify-content: space-between;
+  }
+  .poster {
+    width: 100px;
+    height: 120px;
+  }
+  .test {
+    background-color: black;
+  }
+  .innerShell {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }
-.movieList {
-  display: 'grid';
-  grid-template-columns: 'auto auto auto';
-}
-.poster {
-  width: 100px;
-  height: 120px;
-}
-.test {
-  background-color: black;
-}
-.innerShell {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+@media only screen and (max-width: 759px) {
+  .inputFields {
+    display: flex;
+    justify-content: space-between;
+  }
+  .poster {
+    width: 100px;
+    height: 120px;
+  }
+  .test {
+    background-color: black;
+  }
+  .innerShell {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  h2 {
+  }
 }

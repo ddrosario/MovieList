@@ -1,32 +1,68 @@
-.navBar {
-  display: flex;
-  flex-direction: column;
-  /* justify-content: ; */
-  align-items: center;
-  padding: 25px;
-  /* height: ; */
-  background-color: rgb(109, 109, 109);
-  color: white;
+@media only screen and (min-width: 760px) {
+  .navBar {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: ; */
+    align-items: center;
+    padding: 25px;
+    /* height: ; */
+    background-color: rgb(109, 109, 109);
+    color: white;
+  }
+  .innerNavBar {
+    border: 2px solid white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 1in;
+    width: 1in;
+  }
+  .selectedInner {
+    background-color: lightgrey;
+    color: black;
+    border: 2px solid white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 1in;
+    width: 1in;
+  }
+  .innerNavBar:hover {
+    background-color: darkgray;
+    color: black;
+  }
 }
-.innerNavBar {
-  border: 2px solid white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 1in;
-  width: 1in;
-}
-.selectedInner {
-  background-color: lightgrey;
-  color: black;
-  border: 2px solid white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 1in;
-  width: 1in;
-}
-.innerNavBar:hover {
-  background-color: darkgray;
-  color: black;
+@media only screen and (max-width: 759px) {
+  .navBar {
+    display: flex;
+    flex-direction: row;
+    /* justify-content: ; */
+    align-items: center;
+    padding: 25px;
+    /* height: ; */
+    background-color: rgb(109, 109, 109);
+    color: white;
+  }
+  .innerNavBar {
+    border: 2px solid white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 1in;
+    width: 1in;
+  }
+  .selectedInner {
+    background-color: lightgrey;
+    color: black;
+    border: 2px solid white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 1in;
+    width: 1in;
+  }
+  .innerNavBar:hover {
+    background-color: darkgray;
+    color: black;
+  }
 }
