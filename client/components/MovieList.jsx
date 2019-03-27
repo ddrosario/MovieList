@@ -4,7 +4,7 @@ import styles from '../styles/MovieListStyles.css';
 
 export default function MovieList(props) {
   return (
-    <span>
+    <div>
       <div className={styles.movieList}>
         {props.movies.map(movie => {
           return (
@@ -17,6 +17,6 @@ export default function MovieList(props) {
           );
         })}
       </div>
-    </span>
+    </div>
   );
 }

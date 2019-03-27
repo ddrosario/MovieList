@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use('/api/search', (req, res, next) => {
   // TODO FIX THIS
-  //only on the search because that uses the API so far...
+  // only on the search because that uses the API so far...
   count++;
   if (prevDate.getDate() !== new Date().getDate()) {
     count = 0;

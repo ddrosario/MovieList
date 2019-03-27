@@ -22,8 +22,8 @@
     justify-content: space-between;
   }
   .poster {
-    width: 100px;
-    height: 120px;
+    width: 50px;
+    height: 60px;
   }
   .test {
     background-color: black;
@@ -34,6 +34,9 @@
     align-items: center;
   }
   h2 {
+    font-size: 1em;
+  }
+  div {
     font-size: 1em;
   }
 }

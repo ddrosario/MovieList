@@ -94,7 +94,7 @@ export default class App extends React.Component {
     this.getUserMovie();
   }
   render() {
-    var selectedWindow = <div></div>;
+    var selectedWindow = <div />;
     if (this.state.selected === 1) {
       selectedWindow = (
         <MovieList
@@ -114,9 +114,15 @@ export default class App extends React.Component {
             handleSelectedWindow={this.handleSelectedWindow}
             selected={this.state.selected}
           />
-          <span style={{ display: 'flex', alignItems: 'center' }}>
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              alignSelf: 'center'
+            }}
+          >
             {selectedWindow}
-          </span>
+          </div>
         </span>
         <div />
       </span>
