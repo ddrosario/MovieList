@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
@@ -15,7 +16,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/api/search', (req, res, next) => {
   // TODO FIX THIS
   // only on the search because that uses the API so far...
-  count++;
+  count += 1;
   if (prevDate.getDate() !== new Date().getDate()) {
     count = 0;
     prevDate = new Date();

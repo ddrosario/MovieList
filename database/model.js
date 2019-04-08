@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const db = require('./index.js');
+require('./index.js');
 
 const movieSchema = new mongoose.Schema({
   title: String,

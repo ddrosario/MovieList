@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const mongoose = require('mongoose');
 
 mongoose.connect('mongodb://localhost/movielist', { useNewUrlParser: true });

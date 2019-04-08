@@ -1,17 +1,18 @@
+/* eslint-disable no-console */
+const axios = require('axios');
+// const bcrypt = require('bcrypt');
 const { Movie } = require('../database/model.js');
 const { APIKEY, Mashape, MashapeUrl } = require('../secrets/Api.js');
-const axios = require('axios');
-const bcrypt = require('bcrypt');
 
 const apiUrl = `http://www.omdbapi.com/?apikey=${APIKEY}&`;
 
-/* Helper Functions */
+/*  Helper Functions  */
 function dataScrubber(data) {
   return {
     title: data.Title,
     runtime: data.Runtime,
     posterUrl: data.Poster,
-    year: parseInt(data.Year),
+    year: parseInt(data.Year, 10),
     plot: data.Plot,
     rottenRating: data.Ratings.reduce(
       (acc, curr) => (curr.Source === 'Rotten Tomatoes' ? curr.Value : acc),
@@ -22,9 +23,20 @@ function dataScrubber(data) {
     user_id: 'default',
   };
 }
-
+async function findStreamingService(movie) {
+  // only US for right now
+  Mashape.params = { term: movie, country: 'us' };
+  try {
+    const { data } = await axios.get(MashapeUrl, Mashape);
+    return data;
+  } catch (err) {
+    console.error('could not get data', err);
+    return null;
+  }
+}
+/*  Controller Functions  */
 module.exports = {
-  fetchAll: async (req, res) => {
+  fetchAll: async (_req, res) => {
     try {
       const results = await Movie.find({});
       res.status(200).send(results);
@@ -77,19 +89,11 @@ module.exports = {
         res.send(err);
       });
   },
-  addUser: (req, res) => {},
-  dev: (req, res) => {
-    findStreamingService('american dad');
+  addUser: (_req, res) => {
+    res.send('added');
+  },
+  dev: async (req, res) => {
+    const result = await findStreamingService(req.query.term);
+    res.send(result);
   },
 };
-
-// function findStreamingService(movie) {
-//   axios
-//     .get(MashapeUrl, Mashape)
-//     .then(result => {
-//       console.log('we have some data', result);
-//     })
-//     .catch(err => {
-//       console.log('could not get data', err);
-//     });
-// }
