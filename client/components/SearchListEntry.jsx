@@ -1,19 +1,20 @@
 import React from 'react';
-// import style from '../appstyles.css';
+import styles from '../styles/SearchListEntryStyles.css';
 
 export default function SearchListEntry(props) {
   return (
-    <span
+    <div
       onClick={e => {
         props.handleSelection(e, props.movie.imdbID);
       }}
     >
       click to add
+      {console.log(props.movie)}
       <div>
-        <img src={props.movie.Poster} className="poster" />
+        <img className={styles.poster} src={props.movie.Poster} />
         <div>{props.movie.Title}</div>
         <div>{props.movie.Year}</div>
       </div>
-    </span>
+    </div>
   );
 }

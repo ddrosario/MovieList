@@ -1,0 +1,10 @@
+secrets
+secrets/Api.js
+node_modules
+client
+.git
+.eslintignore
+.eslintrc.js
+.gitignore
+package-lock.json
+webpack.config.js
