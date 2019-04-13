@@ -1,0 +1,44 @@
+@media only screen and (min-width: 760px) {
+  .inputFields {
+    display: flex;
+    justify-content: space-between;
+  }
+  .poster {
+    width: 100px;
+    height: 120px;
+    border: 1px solid black;
+  }
+  .test {
+    background-color: black;
+  }
+  .innerShell {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+@media only screen and (max-width: 759px) {
+  .inputFields {
+    display: flex;
+    justify-content: space-between;
+  }
+  .poster {
+    width: 50px;
+    height: 60px;
+    border: 1px solid black;
+  }
+  .test {
+    background-color: black;
+  }
+  .innerShell {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  h2 {
+    font-size: 1em;
+  }
+  div {
+    font-size: 1em;
+  }
+}
