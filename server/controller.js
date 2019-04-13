@@ -1,3 +1,4 @@
+/* eslint-disable spaced-comment */
 /* eslint-disable no-console */
 const axios = require('axios');
 // const bcrypt = require('bcrypt');
@@ -93,6 +94,7 @@ module.exports = {
     res.send('added');
   },
   dev: async (req, res) => {
+    // looks like api needs a white spaces and everything escaped
     const result = await findStreamingService(req.query.term);
     res.send(result);
   },
