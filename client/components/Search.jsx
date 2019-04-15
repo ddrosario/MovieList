@@ -1,6 +1,8 @@
+/* eslint-disable no-console */
 import React from 'react';
-import SearchList from './SearchList.jsx';
+import PropTypes from 'prop-types';
 import axios from 'axios';
+import SearchList from './SearchList';
 import styles from '../styles/SearchStyles.css';
 
 export default class Search extends React.Component {
@@ -8,40 +10,44 @@ export default class Search extends React.Component {
     super(props);
     this.state = {
       search: '',
-      results: []
+      results: [],
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
   }
+
   handleChange(e) {
     this.setState({
-      search: e.target.value
+      search: e.target.value,
     });
   }
+
   handleSearch(e) {
+    const { search } = this.state;
     axios
-      .get('/api/search', { params: { search: this.state.search } })
+      .get('/api/search', { params: { search } })
       .then(({ data }) => {
         console.log('Here is the data', data);
         this.setState({
-          results: data
+          results: data,
         });
       })
-      .catch(err => {
-        alert('Could not get results', err);
+      .catch((err) => {
+        console.log('Could not get results', err);
       });
     e.preventDefault();
   }
 
-  componentDidMount() {}
   render() {
+    const { results } = this.state;
+    const { handleSelection } = this.props;
     return (
       <span className={styles.search}>
         <form onSubmit={this.handleSearch}>
           <input
-            onChange={e => {
+            onChange={(e) => {
               this.setState({
-                search: e.target.value
+                search: e.target.value,
               });
             }}
             type="text"
@@ -50,10 +56,14 @@ export default class Search extends React.Component {
           <input type="submit" />
         </form>
         <SearchList
-          movies={this.state.results}
-          handleSelection={this.props.handleSelection}
+          movies={results}
+          handleSelection={handleSelection}
         />
       </span>
     );
   }
 }
+
+Search.propTypes = {
+  handleSelection: PropTypes.func.isRequired,
+};
