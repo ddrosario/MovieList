@@ -30,14 +30,17 @@
     "mongoose": "^5.4.0",
     "nodemon": "^1.18.9",
     "path": "^0.12.7",
+    "prop-types": "^15.7.2",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1"
   },
   "devDependencies": {
+    "acorn-jsx": "^5.0.1",
     "babel-core": "^6.26.3",
-    "babel-jest": "^23.6.0",
+    "babel-eslint": "^10.0.1",
+    "babel-jest": "^24.7.1",
     "babel-loader": "^7.0.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
@@ -47,7 +50,7 @@
     "eslint-plugin-import": "^2.16.0",
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-react": "^7.12.4",
-    "jest": "^23.6.0",
+    "jest": "^24.7.1",
     "style-loader": "^0.23.1",
     "webpack": "^4.28.3",
     "webpack-cli": "^3.1.2"
