@@ -1,11 +1,12 @@
+/* eslint-disable no-console */
 import React from 'react';
 import axios from 'axios';
 import MovieList from './components/MovieList';
-import AddMovie from './components/AddMovie';
+// import AddMovie from './components/AddMovie';
 import Search from './components/Search';
 import NavBar from './components/NavBar';
 import styles from './styles/appStyles.css';
-/*******
+/** *****
  * enum selected{
  * login: 0,
  * movies: 1,
@@ -18,11 +19,11 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      loggedIn: false,
-      user: '',
+      // loggedIn: false,
+      // user: '',
       movies: [],
       addMovie: '',
-      selected: 1
+      selected: 1,
     };
     this.getUserMovie = this.getUserMovie.bind(this);
     this.handleRating = this.handleRating.bind(this);
@@ -31,79 +32,89 @@ export default class App extends React.Component {
     this.handleDelete = this.handleDelete.bind(this);
     this.handleSelectedWindow = this.handleSelectedWindow.bind(this);
   }
-  handleRating(e, options) {
-    axios
-      .patch('/api/movies/' + options.id, {
-        movie: options.title,
-        like: options.like
-      })
-      .then(({ data }) => {
-        this.getUserMovie();
-      })
-      .catch(err => {
-        alert('Could not update rating', err);
-      });
+
+  componentDidMount() {
+    this.getUserMovie();
   }
-  handleChange(e, options) {
-    this.setState({
-      addMovie: e.target.value
-    });
-  }
-  handleDelete(e, id) {
-    axios
-      .delete('/api/movies/' + id)
-      .then(res => {
-        console.log('result', res);
-        this.getUserMovie();
-      })
-      .catch(err => alert('could noo delete: ', err));
-  }
-  handleSubmit(e, id) {
-    axios
-      .post('/api/movies', {
-        movie: this.state.addMovie,
-        id: id
-      })
-      .then(() => {
-        this.getUserMovie();
-      })
-      .catch(err => {
-        console.error(err);
-      });
-  }
-  handleSelectedWindow(e, someEnum) {
-    console.log('hello ', someEnum);
-    this.setState({
-      selected: someEnum
-    });
-  }
+
   getUserMovie() {
     axios
       .get('/api/movies')
       .then(({ data }) => {
         console.log('Here are the movies: ', data.movies);
         this.setState({
-          movies: data.reverse()
+          movies: data.reverse(),
         });
       })
-      .catch(err => {
+      .catch((err) => {
         console.log('Could not receive data: ', err);
       });
   }
-  componentDidMount() {
-    this.getUserMovie();
+
+  handleRating(_e, options) {
+    axios
+      .patch(`/api/movies/${options.id}`, {
+        movie: options.title,
+        like: options.like,
+      })
+      .then(() => {
+        this.getUserMovie();
+      })
+      .catch((err) => {
+        console.log('Could not update rating', err);
+      });
   }
+
+  handleChange(e) {
+    this.setState({
+      addMovie: e.target.value,
+    });
+  }
+
+  handleDelete(_e, id) {
+    axios
+      .delete(`/api/movies/${id}`)
+      .then((res) => {
+        console.log('result', res);
+        this.getUserMovie();
+      })
+      .catch(err => console.log('could not delete: ', err));
+  }
+
+  handleSubmit(_e, id) {
+    const { addMovie } = this.state;
+    axios
+      .post('/api/movies', {
+        movie: addMovie,
+        id,
+      })
+      .then(() => {
+        this.getUserMovie();
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }
+
+  handleSelectedWindow(_e, someEnum) {
+    console.log('hello ', someEnum);
+    this.setState({
+      selected: someEnum,
+    });
+  }
+
   render() {
-    var selectedWindow = <div />;
-    if (this.state.selected === 1) {
+    const { selected, movies } = this.state;
+    let selectedWindow = <div />;
+    if (selected === 1) {
       selectedWindow = (
         <MovieList
-          movies={this.state.movies}
+          movies={movies}
           handleRating={this.handleRating}
           handleDelete={this.handleDelete}
         />
       );
-    } else if (this.state.selected === 2) {
+    } else if (selected === 2) {
       selectedWindow = <Search handleSelection={this.handleSubmit} />;
     }
     return (
@@ -112,13 +123,13 @@ export default class App extends React.Component {
         <span className={styles.mainContainer}>
           <NavBar
             handleSelectedWindow={this.handleSelectedWindow}
-            selected={this.state.selected}
+            selected={selected}
           />
           <div
             style={{
               display: 'flex',
               alignItems: 'center',
-              alignSelf: 'center'
+              alignSelf: 'center',
             }}
           >
             {selectedWindow}
