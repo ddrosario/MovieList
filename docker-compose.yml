@@ -1,0 +1,10 @@
+version: "3"
+services:
+  site:
+    build: .
+    image: movielist
+    container_name: movielist
+    ports:
+      - 1337:1337
+    volumes:
+      - .:/app
