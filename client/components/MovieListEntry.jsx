@@ -9,8 +9,7 @@ export default function MovieListEntry({ movie, handleRating, handleDelete }) {
       <h2>{movie.title}</h2>
       <img className={styles.poster} src={movie.posterUrl} alt="" />
       <div>
-        <span>Year: </span>
-        <span>{movie.year}</span>
+        {`Year: ${movie.year}`}
       </div>
       <div className="test">
         <span>Runtime: </span>
