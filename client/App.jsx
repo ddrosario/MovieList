@@ -133,13 +133,7 @@ export default class App extends React.Component {
             handleSelectedWindow={this.handleSelectedWindow}
             selected={selected}
           />
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              alignSelf: 'center',
-            }}
-          >
+          <div className={styles.selectedWindow}>
             {selectedWindow}
           </div>
         </span>

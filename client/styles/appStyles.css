@@ -37,3 +37,9 @@
     width: 100%;
   }
 }
+
+.selectedWindow {
+  display: flex;
+  align-items: center;
+  align-self: center;
+}
