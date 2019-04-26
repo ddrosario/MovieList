@@ -1,10 +1,11 @@
 /* eslint-disable no-console */
 import React from 'react';
 import axios from 'axios';
-import MovieList from './components/MovieList';
 // import AddMovie from './components/AddMovie';
-import Search from './components/Search';
 import NavBar from './components/NavBar';
+import Search from './components/Search';
+import MovieList from './components/MovieList';
+import StreamingList from './components/StreamingList';
 import styles from './styles/appStyles.css';
 /** *****
  * enum selected{
@@ -97,7 +98,6 @@ export default class App extends React.Component {
   }
 
   handleSelectedWindow(_e, someEnum) {
-    console.log('hello ', someEnum);
     this.setState({
       selected: someEnum,
     });
@@ -106,16 +106,24 @@ export default class App extends React.Component {
   render() {
     const { selected, movies } = this.state;
     let selectedWindow = <div />;
-    if (selected === 1) {
-      selectedWindow = (
-        <MovieList
-          movies={movies}
-          handleRating={this.handleRating}
-          handleDelete={this.handleDelete}
-        />
-      );
-    } else if (selected === 2) {
-      selectedWindow = <Search handleSelection={this.handleSubmit} />;
+    switch (selected) {
+      case 1:
+        selectedWindow = (
+          <MovieList
+            movies={movies}
+            handleRating={this.handleRating}
+            handleDelete={this.handleDelete}
+          />
+        );
+        break;
+      case 2:
+        selectedWindow = <Search handleSelection={this.handleSubmit} />;
+        break;
+      case 3:
+        selectedWindow = <StreamingList title="temp" />;
+        break;
+      default:
+        selectedWindow = <div />;
     }
     return (
       <span>
