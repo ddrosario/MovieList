@@ -1,10 +1,19 @@
 version: "3"
 services:
+  database:
+    image: mongo:4
+    container_name: mongodb
+    ports:
+      - 27017:27017
+    expose:
+      - '27017'
   site:
     build: .
     image: movielist
     container_name: movielist
     ports:
-      - 1337:1337
+      - 80:1337
+    links:
+      - mongodb
     volumes:
       - .:/app
