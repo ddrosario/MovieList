@@ -19,7 +19,7 @@
   "author": "DDRosario",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.19.0",
     "bcrypt": "^3.0.4",
     "body-parser": "^1.18.3",
     "cookie-parser": "^1.4.3",
@@ -28,7 +28,7 @@
     "express-session": "^1.15.6",
     "mongo": "^0.1.0",
     "mongoose": "^5.4.0",
-    "nodemon": "^1.18.9",
+    "nodemon": "^1.19.1",
     "path": "^0.12.7",
     "prop-types": "^15.7.2",
     "react": "^16.6.3",
