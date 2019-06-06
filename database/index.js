@@ -1,8 +1,10 @@
 /* eslint-disable linebreak-style */
 /* eslint-disable no-console */
+// eslint-disable-next-line spaced-comment
+//mongodb connection because that's what the container is called
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/movielist', { useNewUrlParser: true });
+mongoose.connect('mongodb://mongodb:27017/movielist', { useNewUrlParser: true });
 
 const db = mongoose.connection;
 
