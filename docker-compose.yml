@@ -1,12 +1,5 @@
 version: "3"
 services:
-  database:
-    image: mongo:4
-    container_name: mongodb
-    ports:
-      - 27017:27017
-    expose:
-      - '27017'
   site:
     build: .
     image: movielist
@@ -15,5 +8,20 @@ services:
       - 80:1337
     links:
       - mongodb
+    depends_on:
+      - mongodb
     volumes:
       - .:/app
+  mongodb:
+    image: mongo:4
+    container_name: "mongodb"
+    restart: always
+    volumes:
+      - mongo:/data/db
+      - ./db-init/:/docker-entrypoint-initdb.d
+    ports:
+      - 27017:27017
+    expose:
+      - '27017'
+volumes:
+  mongo:
