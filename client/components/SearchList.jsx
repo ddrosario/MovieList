@@ -20,7 +20,7 @@ export default function SearchList({ movies, handleSelection }) {
 SearchList.propTypes = {
   movies: PropTypes.arrayOf(PropTypes.shape({
     Title: PropTypes.string,
-    Year: PropTypes.number,
+    Year: PropTypes.string,
     imdbID: PropTypes.string,
     Poster: PropTypes.string,
   })).isRequired,

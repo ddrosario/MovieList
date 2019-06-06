@@ -27,7 +27,7 @@ export default function SearchListEntry({ movie, handleSelection }) {
 SearchListEntry.propTypes = {
   movie: PropTypes.shape({
     Title: PropTypes.string,
-    Year: PropTypes.number,
+    Year: PropTypes.string,
     imdbID: PropTypes.string,
     Poster: PropTypes.string,
   }).isRequired,
