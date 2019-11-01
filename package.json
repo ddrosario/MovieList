@@ -27,7 +27,7 @@
     "express": "^4.16.4",
     "express-session": "^1.15.6",
     "mongo": "^0.1.0",
-    "mongoose": "^5.4.0",
+    "mongoose": "^5.7.5",
     "nodemon": "^1.19.1",
     "path": "^0.12.7",
     "prop-types": "^15.7.2",
